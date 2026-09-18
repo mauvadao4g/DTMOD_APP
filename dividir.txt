@@ -1,0 +1,17 @@
+# Comando usando pra dividir o file.zip
+
+Usei o comando:
+
+split -b 40M -d --suffix-length=2 DTunnellMod.zip DTunnellMod.zip.part
+
+- -b 40M → cada parte com até 40 MB
+- -d → sufixos numéricos (00, 01, 02...) em vez de letras (aa, ab...)
+- --suffix-length=2 → sufixo com 2 dígitos
+
+Isso gerou DTunnellMod.zip.part00, part01 e part02 (40MB, 40MB e 17.6MB). Para remontar, o inverso é:
+
+
+
+# Juntar as partes
+cat DTunnellMod.zip.part* > DTunnellMod.zip
+(que é exatamente o que o reassemble_DTunnellMod.sh faz).
